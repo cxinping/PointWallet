@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>PWC-home</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta content="telephone=no,email=no" name="format-detection"/>
+<script type="text/javascript" src="http://n.sinaimg.cn/finance/appJs/flexible.js"></script>
+<!-- 强制竖屏 -->
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<!-- 百度禁止转码 -->
+<meta http-equiv="Cache-Control" content="no-siteapp">
+</head>
+<body>
+<style>
+/* 初始化CSS */
+html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0;}
+fieldset,img{border:none;}
+address,caption,cite,code,dfn,th,var{font-style:normal; font-weight:normal;}
+ul,ol{list-style:none;}
+select,input{vertical-align:middle;}
+select,input,textarea{font-size:12px;margin:0;}
+table{border-collapse:collapse;}
+body{background: #F8F8F8;color:#333;font:12px/22px 'Hiragino Sans GB','Microsoft Yahei','微软雅黑','SimSun','宋体','Arial';}
+/* 页面通用部分 */
+.clearfix:after{content:".";display:block;height:0;visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+.clearit{clear:both;height:0;font-size:0;overflow:hidden;}
+a{color:#1f3b7b;text-decoration:none;}
+a:visited{color:#6079b2;}
+a:hover,a:active,a:focus{color:#8d0000;text-decoration:underline;}
+
+html, body {
+      position: relative;
+      height: 100%;
+    }
+    .wrap{width: 10rem;margin: 0 auto;}
+    .tab-btn{position: fixed;bottom:0;height: 1.44rem;background: #fff;}
+    .tab-btn a{display: inline-block;width: 2.5rem;height: 1.333333rem;background: url(images/tabs_off.png) no-repeat;background-size: 10rem auto;text-indent: -999em;outline: none;appearance: none;-webkit-tap-highlight-color: transparent;}
+    .tab-btn .tab_selected{background: url(images/tabs_on.png) no-repeat;background-size: 10rem auto;}
+    #tab0_0{background-position: 0 0;}
+    #tab0_1{background-position: -2.5rem 0;}
+    #tab0_2{background-position: -5rem 0;}
+    #tab0_3{background-position: -7.5rem 0;}
+    #tab0_0.tab_selected{background-position: 0 0;}
+    #tab0_1.tab_selected{background-position: -2.5rem 0;}
+    #tab0_2.tab_selected{background-position: -5rem 0;}
+    #tab0_3.tab_selected{background-position: -7.5rem 0;}
+    
+    .tab0_c{width: 10rem;background: #F8F8F8;position: relative;}
+    .tab0_c img{width: 100%;display: block;}
+    .expandOpen{animation-name:expandOpen;-webkit-animation-name:expandOpen;animation-duration:0.3s;-webkit-animation-duration:0.3s;animation-timing-function:ease-out;-webkit-animation-timing-function:ease-out;visibility:visible !important}
+    @keyframes expandOpen{0%{opacity:0.3;}100%{opacity:1;}}
+    @-webkit-keyframes expandOpen{0%{opacity:0.3;}100%{opacity:1;}}
+
+    .to-detail{display: block;width: 10rem;height: 2.346667rem;position: absolute;left: 0;top: 7.066667rem;text-indent: -99em;}
+</style>
+<!-- 内容区域 start -->
+<!-- Swiper -->
+<div class="wrap">
+    <div class="tab0_c" id="tab0_c0"><img src="images/page01.png" alt="">
+    <a href="detail.html" class="to-detail" target="_self">广发银行</a>
+    </div>
+    <div class="tab0_c" id="tab0_c1" style="display:none;"><img src="images/page02_1.png" id="tab0_c1_1" alt=""><img src="images/page02.png" alt=""></div>
+    <div class="tab0_c" id="tab0_c2" style="display:none;"><img src="images/page03.png" alt=""></div>
+    <div class="tab0_c" id="tab0_c3" style="display:none;"><img src="images/page04.png" alt=""></div>
+    <div class="tab-btn">
+        <a href="javascript:;" id="tab0_0" class="bnt01 tab_selected">资产</a><a href="javascript:;" id="tab0_1" class="bnt02">兑换</a><a href="javascript:;" id="tab0_2" class="bnt03">优惠购</a><a href="javascript:;" id="tab0_3" class="bnt04">我的</a>
+    </div>
+</div>
+<script src="http://news.sina.com.cn/268/2015/0112/jquery.newest.js" charset="utf-8"></script>
+<script src="http://n.sinaimg.cn/finance/fe/Tab-min.js"></script>
+<!-- 内容区域 end -->
+<script>
+    var tab0 = new Tab({
+        bonds: [
+            ['tab0_0', 'tab0_c0'],
+            ['tab0_1', 'tab0_c1'],
+            ['tab0_2', 'tab0_c2'],
+            ['tab0_3', 'tab0_c3']
+        ], // 绑定dom，复杂数组格式，每组一对，可传入dom或id字符串
+        trigger: 'click',
+        touchDir:false,
+        customSelect : function (i) {
+            document.body.scrollTop=0;
+            document.documentElement.scrollTop=0;
+            var s = this.states;
+            for(var j = 0; j < s.total; j ++){
+                if(i == j){
+                    this.doms.conts[i].style.display = 'block';
+                    this._addClass(this.doms.conts[i], 'expandOpen');
+                }
+                else{
+                    this.doms.conts[j].style.display = 'none';
+                    this._removeClass(this.doms.conts[j], 'expandOpen');
+                }
+            }
+        } // 自定
+    });
+    $('#tab0_c1_1').on('click',function(){
+        tab0.select(0);
+    });
+</script>
+</body>
+</html>
